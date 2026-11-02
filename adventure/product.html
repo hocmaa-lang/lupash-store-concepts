@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CBTrail — LUPASH Games (design concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1B2559;--ink2:#3B4470;--sun:#FBCA03}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font-family:'Nunito',system-ui,sans-serif;overflow-x:hidden;padding-bottom:84px}
+a{color:var(--ink)}
+.f{font-family:'Fredoka',sans-serif}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:none;border-radius:999px;font-family:'Fredoka',sans-serif;font-weight:600;cursor:pointer;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.card{text-decoration:none;background:#fff;border-radius:26px;overflow:hidden;box-shadow:0 8px 24px rgba(27,37,89,.08);transition:transform .2s}
+.card:hover{transform:translateY(-6px)}
+.thumb{width:96px;height:96px;padding:4px;border-radius:18px;background:#fff;cursor:pointer;border:3px solid #EEF0F7}
+.thumb[aria-pressed="true"]{border-color:#2E4FD8}
+.thumb img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block}
+details{background:#fff;border-radius:22px;border:2px solid #EEF0F7}
+summary{min-height:56px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;font-family:'Fredoka',sans-serif;font-weight:600;font-size:19px;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-size:24px}
+details[open] summary::after{content:'−'}
+details div{padding:0 20px 18px;font-size:16px;line-height:1.6;color:var(--ink2)}
+.concept{position:fixed;left:12px;bottom:96px;z-index:50;background:var(--ink);color:#fff;font-weight:800;font-size:12px;padding:8px 12px;border-radius:999px;opacity:.85}
+.concept a{color:var(--sun)}
+@media (max-width:600px){.concept{display:none}}
+</style>
+</head>
+<body>
+<div style="background:var(--ink);color:#fff;font-size:14px;font-weight:700;padding:10px 16px;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;text-align:center"><span>Designed by an experienced therapist</span><span style="color:var(--sun)">Inspired by the ABCD approach in CBT</span><span>For home, classroom &amp; therapy room</span></div>
+<header style="border-bottom:1px solid #EEF0F7"><div style="max-width:1280px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:24px">
+<a href="index.html" aria-label="LUPASH Games home"><img src="../assets/logo.png" alt="LUPASH Games" style="height:54px;display:block"></a>
+<a href="index.html#finder" class="f" style="font-weight:600;text-decoration:none">← All games</a>
+<button class="btn" style="margin-left:auto;height:44px;background:var(--sun);color:var(--ink);padding:0 18px;font-size:16px">Cart · <span class="cartN">0</span></button>
+</div></header>
+
+<section style="background:linear-gradient(180deg,#D7F6FA 0%,#fff 70%);padding:28px 24px 70px">
+<div style="max-width:1240px;margin:0 auto">
+<div style="font-size:14px;font-weight:700;color:#4A5380;margin-bottom:20px"><a href="index.html" style="color:#4A5380">Home</a> / <a href="index.html#worlds" style="color:#4A5380">Board games</a> / CBTrail</div>
+<div style="display:flex;flex-wrap:wrap;gap:44px;align-items:flex-start">
+<div style="flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:14px">
+<div style="background:#fff;border-radius:34px;padding:28px;box-shadow:0 16px 44px rgba(27,37,89,.10);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden"><img id="main" src="../assets/cbtrail-board-game.jpg" alt="CBTrail board game box" style="width:100%;height:100%;object-fit:contain;border-radius:18px"></div>
+<div style="display:flex;gap:12px">
+<button class="thumb" aria-pressed="true" data-src="../assets/cbtrail-board-game.jpg" data-fit="contain" aria-label="Show the box"><img src="../assets/cbtrail-board-game.jpg" alt=""></button>
+<button class="thumb" aria-pressed="false" data-src="../assets/fam-trail.jpg" data-fit="cover" aria-label="Show a family playing"><img src="../assets/fam-trail.jpg" alt=""></button>
+</div>
+</div>
+<div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;gap:8px;flex-wrap:wrap"><span style="background:#fff;border-radius:999px;padding:6px 14px;font-weight:800;font-size:14px">BOARD GAME</span><span style="background:#fff;border-radius:999px;padding:6px 14px;font-weight:800;font-size:14px">Ages 7+</span></div>
+<h1 class="f" style="font-weight:700;font-size:clamp(40px,5vw,60px);margin:0;line-height:1">CBTrail</h1>
+<p style="font-size:20px;line-height:1.5;margin:0;color:var(--ink2)">A board game about noticing what you think, how you feel, and what you do next.</p>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+<div style="background:#fff;border-radius:20px;padding:14px;text-align:center;border-bottom:5px solid #41D7E8"><div class="f" style="font-weight:700;font-size:22px">2–5</div><div style="font-size:13px;font-weight:700;color:#4A5380">players</div></div>
+<div style="background:#fff;border-radius:20px;padding:14px;text-align:center;border-bottom:5px solid #FBCA03"><div class="f" style="font-weight:700;font-size:22px">30–50</div><div style="font-size:13px;font-weight:700;color:#4A5380">minutes</div></div>
+<div style="background:#fff;border-radius:20px;padding:14px;text-align:center;border-bottom:5px solid #24D330"><div class="f" style="font-weight:700;font-size:22px">100</div><div style="font-size:13px;font-weight:700;color:#4A5380">question &amp; event cards</div></div>
+</div>
+<div style="background:#fff;border-radius:28px;padding:22px;box-shadow:0 12px 34px rgba(27,37,89,.08);display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px"><span class="f" style="font-weight:700;font-size:38px">$61.97</span><span style="display:inline-flex;align-items:center;gap:8px;background:#FDE3E3;color:#A21F1F;border-radius:999px;padding:8px 14px;font-weight:800;font-size:15px"><span style="width:9px;height:9px;border-radius:50%;background:#E94141"></span>Only 3 left in stock</span></div>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;border:2px solid #E3E6F2;border-radius:999px;height:56px"><button id="dec" aria-label="Decrease quantity" style="width:52px;height:52px;border:none;background:none;font-size:24px;font-weight:800;color:var(--ink);cursor:pointer">−</button><span id="qty" class="f" style="min-width:28px;text-align:center;font-weight:700;font-size:20px">1</span><button id="inc" aria-label="Increase quantity" style="width:52px;height:52px;border:none;background:none;font-size:24px;font-weight:800;color:var(--ink);cursor:pointer">+</button></div>
+<button class="btn addBtn" style="flex:1 1 220px;min-height:56px;background:var(--sun);color:var(--ink);font-size:20px;box-shadow:0 5px 0 #D9A900">Add to cart</button>
+</div>
+<label style="display:flex;gap:14px;align-items:center;background:#F2FBEF;border:2px dashed #24D330;border-radius:22px;padding:12px 14px;cursor:pointer">
+<input id="pair" type="checkbox" style="width:22px;height:22px;accent-color:#1E9E29">
+<img src="../assets/cbtiger-card-game.jpg" alt="" style="width:64px;height:64px;object-fit:contain;border-radius:12px;background:#fff">
+<span style="flex-grow:1"><span class="f" style="display:block;font-weight:600;font-size:17px">Pack a second adventure: CBTiger</span><span style="font-size:14px;color:var(--ink2)">The card game for a quick after-school round · $36.97</span></span>
+</label>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;font-size:15px;font-weight:700">
+<div>♥&nbsp; Designed by an experienced therapist</div><div>✦&nbsp; Inspired by CBT's ABCD approach</div><div>●&nbsp; Family, group or one to one</div><div>■&nbsp; High-grade cardboard</div>
+</div>
+<details open><summary>How it plays</summary><div>Two to five players, 30 to 50 minutes. Move along the trail, meet what the trail throws at you, and answer the card you draw. Children who like winning have something to win; children who need a reason to talk have a reason.</div></details>
+<details><summary>Good for</summary><div>Children who find direct questions about feelings uncomfortable.<br>Families who want something to do together that is not a screen.<br>Therapists, counsellors and school staff working one to one or in small groups.</div></details>
+<details><summary>In the box</summary><div>100 question and event cards<br>1 game board<br>1 die</div></details>
+</div>
+</div>
+</div>
+</section>
+
+<section style="background:var(--ink);color:#fff;padding:70px 24px">
+<div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px;align-items:center">
+<div style="flex:1 1 420px;min-width:0"><div class="f" style="font-weight:600;color:var(--sun);font-size:18px;letter-spacing:1px">WHY IT WORKS AT THE TABLE</div><h2 class="f" style="font-weight:700;font-size:clamp(30px,3.6vw,44px);margin:8px 0 14px;line-height:1.1">The questions are the game</h2><p style="font-size:18px;line-height:1.6;margin:0;color:#D5DBEE">They give children a reason to talk about confidence, worry, frustration and pride without being asked to sit down and discuss their feelings. Playing gives them somewhere else to look while they answer.</p></div>
+<div style="flex:1 1 460px;min-width:0"><img src="../assets/fam-trail.jpg" alt="A family playing CBTrail on the floor" style="width:100%;height:340px;object-fit:cover;object-position:center 70%;border-radius:30px;display:block"></div>
+</div>
+</section>
+
+<section style="background:#FFF7E0;padding:70px 24px">
+<div style="max-width:1240px;margin:0 auto">
+<h2 class="f" style="font-weight:700;font-size:clamp(30px,3.6vw,42px);margin:0 0 26px">Next stop on the trail</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px">
+<a href="index.html#worlds" class="card"><div style="background:#FFF4C2;padding:20px"><img src="../assets/cbtime-board-game.jpg" alt="CBTime board game" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block"></div><div style="padding:14px 18px 18px"><div class="f" style="font-weight:600;font-size:20px">CBTime</div><div style="font-weight:800">$59.95 · Ages 8+</div></div></a>
+<a href="index.html#catalog" class="card"><div style="background:#DDF8DF;padding:20px"><img src="../assets/cbtiger-card-game.jpg" alt="CBTiger card game" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block"></div><div style="padding:14px 18px 18px"><div class="f" style="font-weight:600;font-size:20px">CBTiger</div><div style="font-weight:800">$36.97 · Ages 6–14</div></div></a>
+<a href="index.html#catalog" class="card"><div style="background:#FFE6D6;padding:20px"><img src="../assets/together-land-card-game.jpg" alt="Together Land card game" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block"></div><div style="padding:14px 18px 18px"><div class="f" style="font-weight:600;font-size:20px">Together Land</div><div style="font-weight:800">$21.95 · Ages 6–14</div></div></a>
+<a href="index.html#packs" class="card"><div style="background:#FBF7FF;padding:20px"><img src="../assets/emotions-starter.jpg" alt="Emotions Starter bundle" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block"></div><div style="padding:14px 18px 18px"><div class="f" style="font-weight:600;font-size:20px">Emotions Starter</div><div style="font-weight:800">$62.95 · Save $16.92</div></div></a>
+</div>
+</div>
+</section>
+
+<div style="position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid #EEF0F7;box-shadow:0 -10px 30px rgba(27,37,89,.10)">
+<div style="max-width:1240px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:14px">
+<img src="../assets/cbtrail-board-game.jpg" alt="" style="width:52px;height:52px;object-fit:contain;border-radius:12px;background:#D7F6FA">
+<div style="flex-grow:1"><div class="f" style="font-weight:600;font-size:18px">CBTrail</div><div style="font-size:14px;font-weight:800;color:#A21F1F">Only 3 left</div></div>
+<span id="total" class="f" style="font-weight:700;font-size:22px">$61.97</span>
+<button class="btn addBtn" style="min-height:52px;background:var(--sun);color:var(--ink);font-size:18px;padding:0 26px">Add to cart</button>
+</div>
+</div>
+<div class="concept">Design concept A · <a href="../">see all concepts</a></div>
+
+<script>
+(function(){
+var q=1,cart=0,pair=document.getElementById('pair');
+function upd(){document.getElementById('qty').textContent=q;var t=q*61.97+(pair.checked?36.97:0);document.getElementById('total').textContent='$'+t.toFixed(2);document.querySelectorAll('.addBtn').forEach(function(b){if(b.dataset.done)return;b.textContent=pair.checked?'Add both to cart':'Add to cart'})}
+document.getElementById('inc').onclick=function(){q=Math.min(3,q+1);upd()};
+document.getElementById('dec').onclick=function(){q=Math.max(1,q-1);upd()};
+pair.onchange=upd;
+document.querySelectorAll('.addBtn').forEach(function(b){b.onclick=function(){cart+=q+(pair.checked?1:0);document.querySelectorAll('.cartN').forEach(function(e){e.textContent=cart});document.querySelectorAll('.addBtn').forEach(function(x){x.dataset.done=1;x.textContent='Added to your trail'})}});
+document.querySelectorAll('.thumb').forEach(function(t){t.onclick=function(){var m=document.getElementById('main');m.src=t.dataset.src;m.style.objectFit=t.dataset.fit;document.querySelectorAll('.thumb').forEach(function(x){x.setAttribute('aria-pressed',x===t)})}});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>LUPASH Games — Toy Box (design concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#2A1458;--grape:#5B2EE0;--pink:#FF5FA8;--orange:#FF8A1F;--lime:#A8E61D;--mint:#2FD6C3;--lemon:#FFE14D;--cream:#FFF8E8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Baloo 2',system-ui,sans-serif;font-weight:600;overflow-x:hidden}
+a{color:var(--ink)}
+img{max-width:100%}
+.L{font-family:'Lilita One',sans-serif;font-weight:400;letter-spacing:.5px}
+.wrap{max-width:1240px;margin:0 auto}
+.toy{border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink);border-radius:24px}
+.tbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border:4px solid var(--ink);border-radius:999px;box-shadow:0 6px 0 var(--ink);font-family:'Lilita One',sans-serif;font-size:20px;color:var(--ink);text-decoration:none;cursor:pointer;transition:transform .1s,box-shadow .1s;background:var(--lemon)}
+.tbtn:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--ink)}
+.tbtn:active{transform:translateY(5px);box-shadow:0 1px 0 var(--ink)}
+.dots{background-color:var(--lemon);background-image:radial-gradient(rgba(255,255,255,.55) 3px,transparent 3.5px);background-size:28px 28px}
+.sticker{display:inline-block;border:3px solid var(--ink);border-radius:999px;padding:4px 14px;font-family:'Lilita One',sans-serif;font-size:16px;background:#fff}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(calc(var(--r,0deg) * -1))}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes marq{to{transform:translateX(-50%)}}
+@keyframes drop{0%{transform:translate(0,-150px) scale(.6)}60%{transform:translate(0,10px) scale(1)}80%{transform:translate(0,-8px)}100%{transform:translate(0,0)}}
+@keyframes wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.bob{animation:bob 4s ease-in-out infinite}
+.spin{animation:spin 18s linear infinite}
+.wig:hover{animation:wiggle .35s ease-in-out 2}
+.marq{display:flex;width:max-content;animation:marq 28s linear infinite}
+.ball{width:64px;height:64px;border-radius:50%;border:4px solid var(--ink);box-shadow:inset -8px -8px 0 rgba(0,0,0,.15),inset 6px 6px 0 rgba(255,255,255,.45);cursor:pointer;transition:transform .15s}
+.ball:hover{transform:scale(1.08)}
+.feel{display:flex;align-items:center;gap:12px;background:#fff;border:4px solid var(--ink);border-radius:999px;padding:6px 18px 6px 6px;font-family:'Lilita One',sans-serif;font-size:20px;cursor:pointer;box-shadow:0 5px 0 var(--ink);transition:transform .1s;color:var(--ink)}
+.feel:hover{transform:translateY(-2px)}
+.feel[aria-pressed="true"]{background:var(--lemon)}
+.feel span.b{width:40px;height:40px;border-radius:50%;border:3px solid var(--ink);box-shadow:inset -5px -5px 0 rgba(0,0,0,.15),inset 4px 4px 0 rgba(255,255,255,.45)}
+.shelf{position:relative;padding:0 0 34px}
+.shelf::after{content:'';position:absolute;left:-12px;right:-12px;bottom:0;height:30px;border:4px solid var(--ink);border-radius:14px;background:var(--plank,#FF8A1F);box-shadow:0 8px 0 var(--ink)}
+.row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;align-items:end;position:relative;z-index:1}
+.toycard{position:relative;background:#fff;border:4px solid var(--ink);border-radius:26px;padding:14px 14px 16px;cursor:pointer;transition:transform .15s;text-align:left;font:inherit;color:inherit;display:flex;flex-direction:column;gap:8px}
+.toycard:hover{transform:translateY(-8px) rotate(-1deg)}
+.toycard .ph{border-radius:18px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:12px;border:3px solid var(--ink)}
+.toycard img{width:100%;height:100%;object-fit:contain;display:block}
+.tag{position:absolute;top:-16px;right:14px;background:var(--lemon);border:3px solid var(--ink);border-radius:10px;padding:2px 12px;font-family:'Lilita One',sans-serif;font-size:20px;transform:rotate(6deg)}
+.tag::before{content:'';position:absolute;left:50%;top:-12px;width:3px;height:12px;background:var(--ink)}
+.out{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%) rotate(-12deg);background:var(--pink);color:#fff;border:4px solid var(--ink);border-radius:14px;padding:6px 14px;font-family:'Lilita One',sans-serif;font-size:22px;white-space:nowrap;box-shadow:4px 4px 0 var(--ink)}
+.polaroid{background:#fff;border:4px solid var(--ink);padding:12px 12px 46px;box-shadow:8px 8px 0 var(--ink);position:relative}
+.polaroid img{width:100%;height:260px;object-fit:cover;display:block;border:3px solid var(--ink)}
+.tape{position:absolute;top:-16px;left:50%;width:110px;height:30px;transform:translateX(-50%) rotate(-4deg);background:rgba(255,95,168,.75);border:2px solid var(--ink)}
+.dice{width:72px;height:72px;background:#fff;border:4px solid var(--ink);border-radius:18px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:8px;box-shadow:4px 4px 0 var(--ink)}
+.dice i{width:12px;height:12px;border-radius:50%;background:var(--ink);place-self:center}
+#modal{position:fixed;inset:0;background:rgba(42,20,88,.55);display:none;align-items:center;justify-content:center;z-index:80;padding:16px}
+#modal.on{display:flex}
+.cartfab{position:fixed;right:18px;bottom:18px;z-index:60;width:68px;height:68px;border-radius:50%;background:var(--pink);border:4px solid var(--ink);box-shadow:0 6px 0 var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.cartfab b{position:absolute;top:-8px;right:-8px;background:var(--lemon);border:3px solid var(--ink);border-radius:999px;min-width:30px;height:30px;font-family:'Lilita One';font-size:16px;display:flex;align-items:center;justify-content:center}
+.concept{position:fixed;left:12px;bottom:12px;z-index:50;background:var(--ink);color:#fff;font-size:12px;font-weight:800;padding:8px 12px;border-radius:999px;opacity:.9}
+.concept a{color:var(--lemon)}
+.nav a{text-decoration:none;font-family:'Lilita One';font-size:18px;padding:6px 16px;border:3px solid var(--ink);border-radius:999px;background:#fff;box-shadow:0 4px 0 var(--ink)}
+@media (max-width:900px){.row{grid-template-columns:repeat(2,minmax(0,1fr))}.nav{display:none !important}.heroToys{min-height:0 !important;display:grid;grid-template-columns:1fr 1fr;gap:16px}.heroToys>.toy{position:static !important;width:auto !important}.heroToys>.sticker{position:static !important;grid-column:1/-1;justify-self:center}#machine svg{max-width:230px;margin:0 auto}}
+@media (max-width:600px){.concept{display:none}}
+@media (prefers-reduced-motion:reduce){.bob,.spin,.marq{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- feelings ticker -->
+<div style="background:var(--ink);color:#fff;overflow:hidden;border-bottom:4px solid var(--ink)">
+<div class="marq L" style="font-size:20px;padding:10px 0;gap:0" aria-hidden="true" id="ticker"></div>
+</div>
+
+<header style="background:var(--cream);border-bottom:4px solid var(--ink);position:sticky;top:0;z-index:40">
+<div class="wrap" style="padding:10px 20px;display:flex;align-items:center;gap:18px">
+<a href="#top" aria-label="LUPASH Games home" class="wig" style="background:#fff;border:4px solid var(--ink);border-radius:20px;padding:4px 10px;box-shadow:4px 4px 0 var(--ink);display:block"><img src="../assets/logo.png" alt="LUPASH Games" style="height:46px;display:block"></a>
+<nav class="nav" style="display:flex;gap:10px;flex-wrap:wrap;flex-grow:1;justify-content:center">
+<a href="#machine" style="background:var(--lemon)">Feelings machine</a><a href="#shop">Toy shop</a><a href="#tots">Ages 3–5</a><a href="#packs">Mega packs</a><a href="#grownups">Grown-ups</a>
+</nav>
+<button class="tbtn" style="margin-left:auto;background:var(--pink);color:#fff;font-size:18px;padding:0 18px" onclick="document.getElementById('shop').scrollIntoView()">Shop</button>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="dots" style="border-bottom:4px solid var(--ink);position:relative;overflow:hidden">
+<svg aria-hidden="true" style="position:absolute;left:3%;top:40px;width:70px" viewBox="0 0 100 100" class="spin"><path d="M50 5l12 30 33 2-26 21 9 32-28-18-28 18 9-32L5 37l33-2z" fill="#FF5FA8" stroke="#2A1458" stroke-width="5" stroke-linejoin="round"/></svg>
+<svg aria-hidden="true" style="position:absolute;left:44%;bottom:30px;width:90px" viewBox="0 0 120 40"><path d="M5 25 Q 20 5 35 25 T 65 25 T 95 25 T 115 20" fill="none" stroke="#5B2EE0" stroke-width="8" stroke-linecap="round"/></svg>
+<svg aria-hidden="true" style="position:absolute;right:4%;top:24px;width:60px" viewBox="0 0 100 100" class="bob"><circle cx="50" cy="50" r="40" fill="#2FD6C3" stroke="#2A1458" stroke-width="6"/></svg>
+<div class="wrap" style="padding:56px 20px 70px;display:flex;flex-wrap:wrap;gap:30px;align-items:center;position:relative">
+<div style="flex:1 1 440px;min-width:0">
+<span class="sticker" style="background:var(--mint);transform:rotate(-3deg)">Games for kids' big feelings</span>
+<h1 class="L" style="font-size:clamp(52px,7.5vw,104px);line-height:.95;margin:22px 0 18px;color:var(--ink)">Big feelings?<br>Let's
+<span style="display:inline-flex;gap:6px;vertical-align:middle">
+<span class="toy" style="display:inline-block;background:var(--pink);color:#fff;padding:0 14px;transform:rotate(-6deg)">P</span><span class="toy" style="display:inline-block;background:var(--grape);color:#fff;padding:0 14px;transform:rotate(4deg)">L</span><span class="toy" style="display:inline-block;background:var(--mint);padding:0 14px;transform:rotate(-3deg)">A</span><span class="toy" style="display:inline-block;background:var(--orange);padding:0 14px;transform:rotate(6deg)">Y!</span>
+</span></h1>
+<p style="font-size:22px;line-height:1.45;margin:0 0 28px;max-width:540px;font-weight:600">Board games, card games and flipbooks that turn "I'm FINE!" into real talk about anger, worry and friendship. Made by an experienced therapist, played like a toy.</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap">
+<a href="#machine" class="tbtn" style="background:var(--pink);color:#fff;font-size:22px;min-height:60px">Spin the feelings machine</a>
+<a href="#shop" class="tbtn" style="background:#fff;font-size:22px;min-height:60px">Open the toy shop</a>
+</div>
+</div>
+<div class="heroToys" style="flex:1 1 520px;min-width:0;position:relative;min-height:520px">
+<div class="toy bob" style="position:absolute;left:4%;top:8%;width:46%;background:#fff;padding:12px;--r:-6deg;border-radius:28px"><img src="../assets/cbtrail-board-game.jpg" alt="CBTrail board game" style="display:block;border-radius:16px"></div>
+<div class="toy bob" style="position:absolute;right:2%;top:0;width:40%;background:#fff;padding:12px;--r:5deg;animation-delay:1s;border-radius:28px"><img src="../assets/feelings-flipbook-monsters.jpg" alt="Feelings Flipbook Monsters" style="display:block;border-radius:16px"></div>
+<div class="toy bob" style="position:absolute;left:22%;bottom:2%;width:42%;background:#fff;padding:12px;--r:4deg;animation-delay:.5s;border-radius:28px"><img src="../assets/cbtiger-card-game.jpg" alt="CBTiger card game" style="display:block;border-radius:16px"></div>
+<div class="toy bob" style="position:absolute;right:0;bottom:8%;width:34%;background:#fff;padding:10px;--r:-5deg;animation-delay:1.6s;border-radius:28px"><img src="../assets/emotions-flashcards.jpg" alt="Emotions Flashcards" style="display:block;border-radius:16px"></div>
+<span class="sticker" style="position:absolute;left:0;bottom:30%;background:var(--lime);font-size:20px;transform:rotate(-10deg)">Go Fish, but feelings!</span>
+</div>
+</div>
+</section>
+
+<!-- GUMBALL MACHINE -->
+<section id="machine" style="background:var(--grape);color:#fff;border-bottom:4px solid var(--ink);padding:80px 20px;position:relative;overflow:hidden">
+<div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 3px,transparent 3.5px);background-size:30px 30px" aria-hidden="true"></div>
+<div class="wrap" style="position:relative">
+<div style="text-align:center;margin-bottom:40px">
+<span class="sticker" style="background:var(--lemon);color:var(--ink);transform:rotate(2deg)">Try it!</span>
+<h2 class="L" style="font-size:clamp(40px,5.5vw,72px);margin:14px 0 8px;line-height:1">The Feelings Gumball Machine</h2>
+<p style="font-size:21px;margin:0;color:#E9E1FF">What's going on with your kid lately? Pick a gumball, get a game.</p>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:40px;align-items:center;justify-content:center">
+<div style="flex:0 1 340px;position:relative" aria-hidden="true">
+<svg viewBox="0 0 300 440" style="width:100%;display:block">
+<circle cx="150" cy="140" r="120" fill="#DFF7FF" stroke="#2A1458" stroke-width="8"/>
+<g stroke="#2A1458" stroke-width="5">
+<circle cx="95" cy="170" r="24" fill="#FF5FA8"/><circle cx="145" cy="190" r="24" fill="#FFE14D"/><circle cx="198" cy="172" r="24" fill="#2FD6C3"/>
+<circle cx="118" cy="128" r="24" fill="#A8E61D"/><circle cx="172" cy="130" r="24" fill="#FF8A1F"/><circle cx="145" cy="85" r="24" fill="#7FA8FF"/>
+<circle cx="80" cy="120" r="22" fill="#FFE14D"/><circle cx="215" cy="120" r="22" fill="#FF5FA8"/><circle cx="105" cy="215" r="22" fill="#2FD6C3"/><circle cx="190" cy="215" r="22" fill="#A8E61D"/>
+</g>
+<ellipse cx="110" cy="80" rx="22" ry="12" fill="#fff" opacity=".8"/>
+<path d="M70 250 h160 l20 170 h-200 z" fill="#FF5FA8" stroke="#2A1458" stroke-width="8" stroke-linejoin="round"/>
+<rect x="40" y="410" width="220" height="24" rx="10" fill="#FF8A1F" stroke="#2A1458" stroke-width="8"/>
+<circle cx="150" cy="310" r="26" fill="#FFE14D" stroke="#2A1458" stroke-width="7"/><rect x="138" y="298" width="24" height="24" rx="4" fill="#2A1458" transform="rotate(45 150 310)"/>
+<rect x="115" y="355" width="70" height="40" rx="10" fill="#2A1458"/>
+</svg>
+<div id="dropBall" style="position:absolute;left:50%;top:79%;width:44px;height:44px;margin-left:-22px;border-radius:50%;border:4px solid var(--ink);display:none;box-shadow:inset -6px -6px 0 rgba(0,0,0,.15),inset 5px 5px 0 rgba(255,255,255,.45)"></div>
+</div>
+<div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:18px">
+<div id="feelings" style="display:flex;flex-wrap:wrap;gap:12px"></div>
+<div id="result" class="toy" style="background:#fff;color:var(--ink);padding:22px;min-height:220px;border-radius:30px"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TOY SHOP -->
+<section id="shop" class="dots" style="background-color:#BFF3EC;border-bottom:4px solid var(--ink);padding:80px 20px 90px">
+<div class="wrap">
+<div style="text-align:center;margin-bottom:56px">
+<span class="sticker" style="background:var(--orange);transform:rotate(-2deg)">Every game, every shelf</span>
+<h2 class="L" style="font-size:clamp(40px,5.5vw,72px);margin:14px 0 8px;line-height:1">The LUPASH Toy Shop</h2>
+<p style="font-size:21px;margin:0">Tap any box to peek inside.</p>
+</div>
+<div id="shelves" style="display:flex;flex-direction:column;gap:70px"></div>
+</div>
+</section>
+
+<!-- HOW TO PLAY -->
+<section style="background:var(--lemon);border-bottom:4px solid var(--ink);padding:80px 20px">
+<div class="wrap">
+<h2 class="L" style="font-size:clamp(38px,5vw,64px);margin:0 0 40px;text-align:center;line-height:1">How LUPASH game night works</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px">
+<div class="toy" style="background:#fff;padding:26px;border-radius:30px;display:flex;flex-direction:column;gap:12px"><div class="dice"><i style="grid-area:2/2"></i></div><div class="L" style="font-size:30px">Pick a game</div><p style="margin:0;font-size:18px;line-height:1.45">Racing a trail, planting a forest, collecting sets: every game has a different way to play.</p></div>
+<div class="toy" style="background:#fff;padding:26px;border-radius:30px;display:flex;flex-direction:column;gap:12px;transform:rotate(1deg)"><div class="dice"><i style="grid-area:1/1"></i><i style="grid-area:3/3"></i></div><div class="L" style="font-size:30px">Play together</div><p style="margin:0;font-size:18px;line-height:1.45">Kids think they're trying to win. That's the point: playing gives them somewhere else to look.</p></div>
+<div class="toy" style="background:#fff;padding:26px;border-radius:30px;display:flex;flex-direction:column;gap:12px;transform:rotate(-1deg)"><div class="dice"><i style="grid-area:1/1"></i><i style="grid-area:2/2"></i><i style="grid-area:3/3"></i></div><div class="L" style="font-size:30px">Talk it out</div><p style="margin:0;font-size:18px;line-height:1.45">The cards ask the questions, so kids talk about feelings without "the talk". Inspired by CBT's ABCD approach.</p></div>
+</div>
+</div>
+</section>
+
+<!-- POLAROIDS -->
+<section style="background:var(--cream);border-bottom:4px solid var(--ink);padding:90px 20px">
+<div class="wrap">
+<h2 class="L" style="font-size:clamp(40px,5.5vw,72px);margin:0 0 50px;text-align:center;line-height:1">Game night <span style="color:var(--pink)">&gt;</span> screen time</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:34px">
+<div class="polaroid" style="transform:rotate(-3deg)"><span class="tape"></span><img src="../assets/fam-trail.jpg" alt="A family playing CBTrail on the floor" style="object-position:center 70%"><span class="L" style="position:absolute;left:16px;bottom:10px;font-size:22px">Trail night!</span></div>
+<div class="polaroid" style="transform:rotate(2deg) translateY(20px)"><span class="tape" style="background:rgba(47,214,195,.8)"></span><img src="../assets/fam-tiger.jpg" alt="A family playing CBTiger cards"><span class="L" style="position:absolute;left:16px;bottom:10px;font-size:22px">Go Fish for feelings</span></div>
+<div class="polaroid" style="transform:rotate(-1.5deg)"><span class="tape" style="background:rgba(255,225,77,.85)"></span><img src="../assets/fam-trees.jpg" alt="A father and two children playing CBTrees"><span class="L" style="position:absolute;left:16px;bottom:10px;font-size:22px">Planting the forest</span></div>
+</div>
+</div>
+</section>
+
+<!-- GROWN-UPS -->
+<section id="grownups" style="background:var(--mint);border-bottom:4px solid var(--ink);padding:80px 20px">
+<div class="wrap" style="display:flex;flex-wrap:wrap;gap:36px;align-items:center">
+<div style="flex:1 1 440px;min-width:0">
+<span class="sticker" style="background:#fff">For the grown-ups</span>
+<h2 class="L" style="font-size:clamp(36px,4.6vw,58px);margin:14px 0 14px;line-height:1.02">Fun on the outside. Thoughtful on the inside.</h2>
+<div style="display:flex;flex-direction:column;gap:12px;font-size:19px">
+<div style="display:flex;gap:12px;align-items:center"><span class="L" style="flex:0 0 40px;height:40px;border-radius:50%;background:var(--pink);color:#fff;border:3px solid var(--ink);display:flex;align-items:center;justify-content:center">1</span>Designed by an experienced therapist</div>
+<div style="display:flex;gap:12px;align-items:center"><span class="L" style="flex:0 0 40px;height:40px;border-radius:50%;background:var(--lemon);border:3px solid var(--ink);display:flex;align-items:center;justify-content:center">2</span>Inspired by the ABCD approach in Cognitive Behavioral Therapy</div>
+<div style="display:flex;gap:12px;align-items:center"><span class="L" style="flex:0 0 40px;height:40px;border-radius:50%;background:var(--grape);color:#fff;border:3px solid var(--ink);display:flex;align-items:center;justify-content:center">3</span>For home, classrooms, groups and therapy rooms</div>
+<div style="display:flex;gap:12px;align-items:center"><span class="L" style="flex:0 0 40px;height:40px;border-radius:50%;background:var(--orange);border:3px solid var(--ink);display:flex;align-items:center;justify-content:center">4</span>Durable, high-grade cardboard</div>
+</div>
+<div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:26px"><a href="#packs" class="tbtn" style="background:#fff">Therapist toolbox</a><a href="mailto:info@lupashgames.com" class="tbtn" style="background:var(--ink);color:#fff">School &amp; bulk orders</a></div>
+</div>
+<div style="flex:1 1 400px;min-width:0"><div class="toy" style="background:#fff;padding:14px;border-radius:32px;transform:rotate(2deg)"><img src="../assets/trees-board.jpg" alt="CBTrees box, board, cards and pieces" style="display:block;border-radius:20px"></div></div>
+</div>
+</section>
+
+<!-- CLUB + FOOTER -->
+<footer style="background:var(--ink);color:#fff;padding:0 20px 80px;position:relative">
+<svg aria-hidden="true" viewBox="0 0 1440 60" preserveAspectRatio="none" style="display:block;width:calc(100% + 40px);margin:0 -20px;height:50px"><path d="M0 0 H1440 V20 Q 1380 60 1320 20 T 1200 20 T 1080 20 T 960 20 T 840 20 T 720 20 T 600 20 T 480 20 T 360 20 T 240 20 T 120 20 T 0 20 Z" fill="#2FD6C3"/></svg>
+<div class="wrap" style="padding-top:50px;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between">
+<div style="flex:1 1 420px;min-width:0">
+<h2 class="L" style="font-size:44px;margin:0 0 8px;line-height:1">Join the Play Club</h2>
+<p style="font-size:18px;margin:0 0 18px;color:#D9CCFF">New games, restocks and family offers. Be first when CBTrees and CBTrip are back on the shelf.</p>
+<form onsubmit="event.preventDefault();this.querySelector('button').textContent='Yay, you’re in!'" style="display:flex;gap:10px;flex-wrap:wrap">
+<label for="em" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label>
+<input id="em" type="email" required placeholder="grown-up@email.com" style="flex:1 1 240px;min-height:56px;border:4px solid #fff;border-radius:999px;padding:0 20px;font-size:18px;font-family:inherit">
+<button class="tbtn" style="min-height:56px;background:var(--lemon);border-color:#fff;box-shadow:0 6px 0 #000">I'm in!</button>
+</form>
+</div>
+<div style="display:flex;gap:40px;flex-wrap:wrap;font-size:17px">
+<div style="display:flex;flex-direction:column;gap:8px"><span class="L" style="font-size:22px;color:var(--lemon)">Shop</span><a href="#shop" style="color:#fff">Board games</a><a href="#shop" style="color:#fff">Card games</a><a href="#tots" style="color:#fff">Ages 3–5</a><a href="#packs" style="color:#fff">Mega packs</a></div>
+<div style="display:flex;flex-direction:column;gap:8px"><span class="L" style="font-size:22px;color:var(--mint)">Help</span><a href="mailto:info@lupashgames.com" style="color:#fff">info@lupashgames.com</a><a href="#top" style="color:#fff">Shipping &amp; returns</a><a href="#grownups" style="color:#fff">For therapists</a></div>
+</div>
+</div>
+<div class="wrap" style="margin-top:40px;font-size:14px;color:#B9A8F0">© 2026 Lupash Games</div>
+</footer>
+
+<button class="cartfab" aria-label="Cart"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17" cy="20.5" r="1.2"/></svg><b id="cartN">0</b></button>
+<div class="concept">Design concept B · <a href="../">see all concepts</a></div>
+
+<div id="modal" role="dialog" aria-modal="true" aria-label="Product quick view"><div class="toy" id="mbox" style="background:#fff;max-width:760px;width:100%;padding:22px;border-radius:32px;display:flex;flex-wrap:wrap;gap:22px;position:relative;max-height:90vh;overflow:auto"></div></div>
+
+<script src="../assets/data.js"></script>
+<script>
+(function(){
+var A='../assets/',P=window.LUPASH.products,B=window.LUPASH.bundles,cart=0;
+var by={};P.forEach(function(p){by[p.id]=p});
+var esc=function(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')};
+function bump(n){cart+=n||1;var c=document.getElementById('cartN');c.textContent=cart;c.parentNode.animate([{transform:'scale(1)'},{transform:'scale(1.25)'},{transform:'scale(1)'}],{duration:350})}
+// ticker
+var words=['HAPPY','BRAVE','WORRIED','ANGRY','CALM','SHY','PROUD','SILLY','FRUSTRATED','HOPEFUL','JEALOUS','CONFIDENT'];var cols=['#FFE14D','#FF5FA8','#2FD6C3','#A8E61D','#FF8A1F','#B9A8FF'];
+var t=words.map(function(w,i){return '<span style="padding:0 22px;color:'+cols[i%cols.length]+'">'+w+'</span><span style="color:#fff">★</span>'}).join('');document.getElementById('ticker').innerHTML=t+t;
+// gumball machine
+var F=[
+ {k:'angry',label:'Big angry moments',c:'#FF5FA8',ids:['monsters','cbtiger'],why:'Flip to angry and the page says what to do: count to ten, walk away, take a deep breath. CBTiger turns 14 emotions into a game of Go Fish.'},
+ {k:'worry',label:'Lots of worrying',c:'#2FD6C3',ids:['cbtrail','cbtime'],why:'CBTrail’s questions get kids talking about worry and pride while they race. CBTime asks about past, present and future, depending on where they land.'},
+ {k:'shy',label:'Shy with friends',c:'#FFE14D',ids:['together','cbtrees'],why:'Together Land is Crazy Eights with challenges for up to eight players. CBTrees rewards kids who are willing to have a go.'},
+ {k:'screens',label:'Too much screen time',c:'#A8E61D',ids:['cbtrail','together'],why:'Something the whole family plays together at the kitchen table, that is not a screen.'},
+ {k:'calm',label:'Can’t calm down',c:'#FF8A1F',ids:['mworld','mland','poster'],why:'Mindfulness as a game, guided calm-down stories, and a daily feelings check-in for the fridge.'},
+ {k:'tiny',label:'My little one is 3–5',c:'#B9A8FF',ids:['flash','poster','monsters'],why:'First words for big feelings: memory and snap with 46 emotion cards, and a magnetic poster for a daily check-in.'}
+];
+var cur=null;
+function feelBtns(){document.getElementById('feelings').innerHTML=F.map(function(f){return '<button class="feel" data-k="'+f.k+'" aria-pressed="'+(cur===f.k)+'"><span class="b" style="background:'+f.c+'"></span>'+esc(f.label)+'</button>'}).join('');document.querySelectorAll('.feel').forEach(function(b){b.onclick=function(){pick(b.dataset.k)}})}
+function mini(p){var ins=p.stock>0;return '<div style="flex:1 1 170px;min-width:0;border:3px solid #2A1458;border-radius:20px;padding:10px;display:flex;flex-direction:column;gap:6px;background:'+p.tint+'"><img src="'+A+p.img+'" alt="'+esc(p.title)+'" style="width:100%;aspect-ratio:1/1;object-fit:contain;border-radius:12px;background:#fff;'+(ins?'':'opacity:.55')+'"><div class="L" style="font-size:19px;line-height:1.1">'+esc(p.title)+'</div><div style="display:flex;justify-content:space-between;align-items:center;gap:6px"><span class="L" style="font-size:20px">'+p.price+'</span>'+(ins?'<button class="tbtn addq" data-id="'+p.id+'" style="min-height:40px;padding:0 14px;font-size:16px;box-shadow:0 4px 0 #2A1458;border-width:3px">Add</button>':'<span class="sticker" style="font-size:13px;background:#FF5FA8;color:#fff">Back soon</span>')+'</div></div>'}
+function pick(k){cur=k;var f=F.filter(function(x){return x.k===k})[0];feelBtns();
+ var d=document.getElementById('dropBall');d.style.display='block';d.style.background=f.c;d.style.animation='none';void d.offsetWidth;d.style.animation='drop .7s ease-out';
+ document.getElementById('result').innerHTML='<div class="L" style="font-size:28px;margin-bottom:6px">Your gumball says: try these!</div><p style="margin:0 0 14px;font-size:17px;line-height:1.45">'+esc(f.why)+'</p><div style="display:flex;gap:12px;flex-wrap:wrap">'+f.ids.map(function(i){return mini(by[i])}).join('')+'</div>';
+ wireAdd(document.getElementById('result'));}
+function wireAdd(r){r.querySelectorAll('.addq').forEach(function(b){b.onclick=function(e){e.stopPropagation();bump(1);b.textContent='Yay!'}})}
+feelBtns();
+document.getElementById('result').innerHTML='<div style="height:100%;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px"><div class="L" style="font-size:30px">Pick a gumball above</div><p style="margin:0;font-size:18px">We’ll pop out the games that help with it.</p></div>';
+// shelves
+var shelves=[
+ {id:'boards',title:'Board games',sub:'The big adventures',plank:'#FF8A1F',items:['cbtrail','cbtime','cbtrees','cbtrip']},
+ {id:'cards',title:'Card games',sub:'Pocket-sized, play anywhere',plank:'#FF5FA8',items:['cbtiger','together','mworld','mland']},
+ {id:'tots',title:'Tiny tots 3–5',sub:'First words for big feelings',plank:'#A8E61D',items:['flash','monsters','poster','veg']}
+];
+function card(p,isB){var ins=p.stock>0;var idx=isB?'b:'+B.indexOf(p):p.id;return '<button class="toycard" data-k="'+idx+'" aria-label="Peek inside '+esc(p.title)+'"><span class="tag">'+p.price+'</span><span class="ph" style="background:'+(p.tint||'#F1EAFF')+'"><img src="'+A+p.img+'" alt="" loading="lazy" style="'+(ins?'':'opacity:.5;filter:saturate(.5)')+'"></span>'+(ins?'':'<span class="out">Coming back!</span>')+'<span class="L" style="font-size:21px;line-height:1.1">'+esc(p.title)+'</span><span style="font-size:15px;line-height:1.3">'+esc(isB?('Save '+p.save):p.age)+'</span>'+(ins&&p.stock<=10?'<span class="sticker" style="font-size:13px;background:#FFE14D;align-self:flex-start">Only '+p.stock+' left!</span>':'')+'</button>'}
+var html=shelves.map(function(s){var items=s.items.map(function(i){return by[i]});items.sort(function(a,b){return (b.stock>0)-(a.stock>0)});return '<div id="'+s.id+'" style="scroll-margin-top:100px"><div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:26px"><h3 class="L" style="font-size:40px;margin:0">'+s.title+'</h3><span style="font-size:19px">'+s.sub+'</span></div><div class="shelf" style="--plank:'+s.plank+'"><div class="row">'+items.map(function(p){return card(p)}).join('')+'</div></div></div>'}).join('');
+var bs=B.slice().sort(function(a,b){return (b.stock>0)-(a.stock>0)});
+html+='<div id="packs" style="scroll-margin-top:100px"><div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:26px"><h3 class="L" style="font-size:40px;margin:0">Mega packs</h3><span style="font-size:19px">Bundles that save you money</span></div><div class="shelf" style="--plank:#5B2EE0"><div class="row">'+bs.slice(0,4).map(function(b){return card(b,true)}).join('')+'</div></div><div class="shelf" style="--plank:#5B2EE0;margin-top:60px"><div class="row">'+bs.slice(4).map(function(b){return card(b,true)}).join('')+'</div></div></div>';
+document.getElementById('shelves').innerHTML=html;
+// quick view
+var M=document.getElementById('modal'),MB=document.getElementById('mbox');
+document.querySelectorAll('.toycard').forEach(function(c){c.onclick=function(){var k=c.dataset.k;var p=k.indexOf('b:')===0?B[+k.slice(2)]:by[k];var ins=p.stock>0;
+ MB.innerHTML='<button id="mx" aria-label="Close" class="L" style="position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:3px solid #2A1458;background:#FFE14D;font-size:22px;cursor:pointer">×</button><div style="flex:1 1 260px;min-width:0;border:3px solid #2A1458;border-radius:22px;background:'+(p.tint||'#F1EAFF')+';padding:16px"><img src="'+A+p.img+'" alt="'+esc(p.title)+'" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;border-radius:14px"></div><div style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:12px;padding-top:10px"><span class="sticker" style="align-self:flex-start;background:#2FD6C3">'+esc(p.type||'BUNDLE')+(p.age?' · '+p.age:'')+'</span><div class="L" style="font-size:38px;line-height:1">'+esc(p.title)+'</div><p style="margin:0;font-size:18px;line-height:1.45">'+esc(p.line)+'</p><div class="L" style="font-size:34px">'+p.price+(p.was?' <s style="font-size:22px;color:#7A6AA8">'+p.was+'</s>':'')+'</div>'+(ins?(p.stock<=10?'<span class="sticker" style="align-self:flex-start;background:#FFE14D">Only '+p.stock+' left!</span>':'')+'<button class="tbtn" id="madd" style="background:#FF5FA8;color:#fff;min-height:60px;font-size:22px">Add to cart</button>':'<span class="sticker" style="align-self:flex-start;background:#FF5FA8;color:#fff">Coming back soon</span><button class="tbtn" id="mping" style="background:#fff;min-height:56px">Ping me when it’s back</button>')+'</div>';
+ M.classList.add('on');document.getElementById('mx').onclick=close;var a=document.getElementById('madd');if(a)a.onclick=function(){bump(1);a.textContent='Added! Yay!'};var pg=document.getElementById('mping');if(pg)pg.onclick=function(){pg.textContent='We’ll email you!'};document.getElementById('mx').focus()}});
+function close(){M.classList.remove('on')}
+M.onclick=function(e){if(e.target===M)close()};document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
+</script>
+</body>
+</html>
