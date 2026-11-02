@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CBTiger Card Game — LUPASH Games (design concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="studio.css">
+<style>
+.pdp{padding:28px 0 90px}
+.crumbs{font-size:13px;color:var(--ink2);margin-bottom:26px}
+.crumbs a{color:var(--ink2)}
+.pdp-in{display:grid;grid-template-columns:1.08fr 1fr;gap:64px;align-items:start}
+.gal{position:sticky;top:100px;display:grid;grid-template-columns:84px 1fr;gap:16px}
+.thumbs{display:flex;flex-direction:column;gap:10px}
+.thumb{width:84px;height:84px;border-radius:14px;border:1.5px solid transparent;background:var(--sageT);padding:0;cursor:pointer;overflow:hidden}
+.thumb[aria-pressed="true"]{border-color:var(--ink)}
+.thumb img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+.stage{background:var(--sageT);border-radius:28px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.main{max-width:82%;max-height:82%;object-fit:contain;mix-blend-mode:multiply}
+.main.cover{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:cover;mix-blend-mode:normal}
+.buy h1{font-family:var(--serif);font-weight:300;font-size:clamp(48px,5.4vw,76px);line-height:1;letter-spacing:-.02em;margin:14px 0 12px}
+.buy .sub{font-size:19px;color:var(--ink2);margin:0 0 16px;max-width:520px}
+.rate{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink2);margin-bottom:22px}
+.price{font-family:var(--serif);font-size:38px;font-weight:400}
+.instock{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#45633F}
+.instock i{width:8px;height:8px;border-radius:50%;background:#5E7D58}
+.feelings{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 26px}
+.feelings span{font-size:13px;font-weight:600;border-radius:999px;padding:6px 12px;background:var(--paper);border:1px solid var(--line)}
+.feelings-h{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink2);margin:26px 0 0}
+.qtyrow{display:flex;gap:12px;margin:8px 0 14px}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;background:var(--paper);height:56px}
+.qty button{width:50px;height:54px;border:none;background:none;font-size:22px;cursor:pointer}
+.qty span{min-width:22px;text-align:center;font-weight:700}
+.atc{flex:1;min-height:56px;font-size:16px}
+.set{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:22px;margin-top:18px}
+.set h3{font-family:var(--serif);font-weight:400;font-size:24px;margin:0 0 4px}
+.set p{margin:0 0 14px;font-size:14px;color:var(--ink2)}
+.set-pick{display:flex;align-items:center;gap:14px;padding:10px 0;border-top:1px solid var(--line);cursor:pointer}
+.set-pick input{width:20px;height:20px;accent-color:#1E2A3F;flex:none}
+.set-pick .t{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:5px;flex:none}
+.set-pick .t img{mix-blend-mode:multiply;max-height:100%}
+.set-pick .n{flex:1;font-size:15px}
+.set-pick .n b{font-family:var(--serif);font-weight:400;font-size:18px;display:block}
+.set-ship{font-size:14px;margin:14px 0 8px}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:22px 0}
+.facts div{padding:14px 0;font-size:12.5px;color:var(--ink2);line-height:1.3}
+.facts div+div{padding-left:14px;border-left:1px solid var(--line)}
+.facts b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;color:var(--ink)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:60px;font-family:var(--serif);font-size:22px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-family:var(--sans);font-size:22px;font-weight:300}
+details[open] summary::after{content:'\2013'}
+details .d{padding:0 0 20px;color:var(--ink2);font-size:16px;line-height:1.65}
+details ul{margin:0;padding-left:18px}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--ink);color:#E6E9EF}
+.story img{width:100%;height:100%;object-fit:cover;min-height:420px}
+.story-t{padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
+.story-t .quote{color:#fff}
+.story-t .quote em{color:var(--butter)}
+.mbar{display:none}
+@media (max-width:900px){
+  .pdp-in{grid-template-columns:1fr;gap:30px}
+  .gal{position:static;grid-template-columns:1fr}
+  .thumbs{flex-direction:row;order:2;overflow-x:auto}
+  .thumb{flex:none;width:68px;height:68px}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts div:nth-child(3){padding-left:0;border-left:none;border-top:1px solid var(--line)}
+  .facts div:nth-child(4){border-top:1px solid var(--line)}
+  .story{grid-template-columns:1fr}
+  .story-t{padding:50px 22px}
+  .story img{min-height:280px}
+  body{padding-bottom:78px}
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--paper);border-top:1px solid var(--line);padding:10px 16px;gap:12px;align-items:center}
+  .mbar .atc{min-height:52px}
+}
+</style>
+</head>
+<body>
+<div class="bar"><span>Free US shipping on orders over $100</span><span class="dot" aria-hidden="true"></span><span>Designed by an experienced therapist</span></div>
+<header class="hdr"><div class="wrap hdr-in">
+<a href="index.html" class="logo" aria-label="LUPASH Games home"><img src="../assets/logo.png" alt="LUPASH Games"></a>
+<nav class="nav" aria-label="Main"><a href="index.html#feelings">Shop by feeling</a><a href="index.html#ages">Shop by age</a><a href="index.html#boards">Board games</a><a href="index.html#bundles">Bundles</a><a href="index.html#educators">For educators</a></nav>
+<div class="hdr-icons"><button class="icon" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg></button><button class="icon cart-open" aria-label="Open cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="badge cartN">0</span></button></div>
+</div></header>
+
+<section class="pdp"><div class="wrap">
+<div class="crumbs"><a href="index.html">Home</a> / <a href="index.html#feelings">Card games</a> / CBTiger</div>
+<div class="pdp-in">
+<div class="gal">
+<div class="thumbs">
+<button class="thumb" aria-pressed="true" data-src="../assets/cbtiger-card-game.jpg" data-fit="contain" aria-label="Box"><img src="../assets/cbtiger-card-game.jpg" alt=""></button>
+<button class="thumb" aria-pressed="false" data-src="../assets/tiger-PHOTO-04-c.jpg" data-fit="contain" aria-label="Feeling cards"><img src="../assets/tiger-PHOTO-04-c.jpg" alt=""></button>
+<button class="thumb" aria-pressed="false" data-src="../assets/tiger-PHOTO-05-c.jpg" data-fit="contain" aria-label="A card in hand"><img src="../assets/tiger-PHOTO-05-c.jpg" alt=""></button>
+<button class="thumb" aria-pressed="false" data-src="../assets/tiger-PHOTO-07-c.jpg" data-fit="cover" aria-label="Two boys playing"><img src="../assets/tiger-PHOTO-07-c.jpg" alt=""></button>
+<button class="thumb" aria-pressed="false" data-src="../assets/fam-tiger.jpg" data-fit="cover" aria-label="A family playing"><img src="../assets/fam-tiger.jpg" alt=""></button>
+</div>
+<div class="stage"><img id="mainImg" class="main" src="../assets/cbtiger-card-game.jpg" alt="CBTiger card game"></div>
+</div>
+
+<div class="buy">
+<span class="pill pill-sage">Naming feelings</span>
+<h1>CBTiger</h1>
+<p class="sub">Fourteen emotions, a deck of cards, and the rules of Go Fish.</p>
+<div class="rate"><span class="stars" aria-hidden="true">★★★★★</span>4.5 average rating on Amazon</div>
+<div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap"><span class="price">$36.97</span><span class="instock"><i></i>In stock, ready to ship</span></div>
+
+<div class="facts"><div><b>6–14</b>ages</div><div><b>2–6</b>players</div><div><b>20–30</b>minutes</div><div><b>47</b>cards</div></div>
+
+<div class="qtyrow">
+<div class="qty"><button id="dec" aria-label="Decrease quantity">−</button><span id="qty">1</span><button id="inc" aria-label="Increase quantity">+</button></div>
+<button class="btn btn-ink atc">Add to cart</button>
+</div>
+
+<div class="set">
+<h3>Complete the set</h3>
+<p>Pair CBTiger with a second game, and get closer to free shipping.</p>
+<label class="set-pick"><input type="checkbox" value="together"><span class="t tint-butter"><img src="../assets/together-land-card-game.jpg" alt=""></span><span class="n"><b>Together Land</b>Up to eight players · $21.95</span></label>
+<label class="set-pick"><input type="checkbox" value="flash"><span class="t tint-sage"><img src="../assets/emotions-flashcards.jpg" alt=""></span><span class="n"><b>Emotions Flashcards</b>Three ways to play · $22.95</span></label>
+<label class="set-pick"><input type="checkbox" value="cbtrail"><span class="t tint-mist"><img src="../assets/cbtrail-board-game.jpg" alt=""></span><span class="n"><b>CBTrail</b>The board game · $61.97</span></label>
+<p class="set-ship" id="setShip"></p>
+<div class="ship-track" style="background:var(--sand)"><div class="ship-fill" id="setFill"></div></div>
+<p style="margin:12px 0 0;font-size:14px">Total <b id="setTotal">$36.97</b></p>
+</div>
+
+<p class="feelings-h">The 14 feelings in the deck</p>
+<div class="feelings"><span>Angry</span><span>Scared</span><span>Shy</span><span>Happy</span><span>Love</span><span>Impatient</span><span>Calm</span><span>Empathy</span><span>Hopeful</span><span>Confident</span><span>Jealous</span><span>Frustrated</span><span>Sad</span><span>Worried</span></div>
+
+<details open><summary>How it plays</summary><div class="d">Two to six players, 20 to 30 minutes. Children collect sets and answer a question about whichever feeling they are holding, which is a much easier ask than naming a feeling from nothing. If you can play Go Fish you can play this, so children can teach each other and adults can stay out of it.</div></details>
+<details><summary>Good for</summary><div class="d"><ul><li>A first step for families who have not tried anything like this before</li><li>Travelling, waiting rooms and anywhere a board will not fit</li><li>Therapists wanting a short, contained activity</li></ul></div></details>
+<details><summary>In the box</summary><div class="d">47 cards covering 14 emotions.</div></details>
+<details><summary>Shipping</summary><div class="d">Free US shipping on orders over $100. Standard shipping $9.95 below that.</div></details>
+</div>
+</div>
+</div></section>
+
+<section class="story">
+<img src="../assets/tiger-PHOTO-07-c.jpg" alt="Two boys laughing over CBTiger cards">
+<div class="story-t">
+<p class="eyebrow light">Why it works</p>
+<p class="quote">Over a few rounds a child ends up having said something about most of them, and none of it felt like being <em>asked</em>.</p>
+</div>
+</section>
+
+<section class="sec"><div class="wrap">
+<div class="sec-head"><div><p class="eyebrow">Keep playing</p><h2 class="h2">Pairs well <em>with</em>.</h2></div><a href="index.html#feelings" class="link-arrow">Shop all games →</a></div>
+<div class="grid" id="related"></div>
+</div></section>
+
+<div class="mbar"><div><div style="font-family:var(--serif);font-size:18px">CBTiger</div><div style="font-size:13px;color:var(--ink2)">$36.97</div></div><button class="btn btn-ink atc">Add to cart</button></div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Cart" aria-hidden="true">
+<div class="dr-head"><h3>Your cart</h3><button class="icon dr-close" aria-label="Close cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="ship"><p id="shipMsg"></p><div class="ship-track"><div class="ship-fill" id="shipFill"></div></div></div>
+<div class="dr-items" id="drItems"></div>
+<div class="dr-up" id="drUp"></div>
+<div class="dr-foot"><div class="dr-sum"><span>Subtotal</span><span id="drSub">$0.00</span></div><button class="btn btn-ink full">Checkout</button><p class="dr-note">Design concept: checkout is not connected.</p></div>
+</aside>
+<div class="concept">Design concept C · <a href="../">all concepts</a></div>
+
+<script src="../assets/data.js"></script>
+<script src="studio.js"></script>
+<script>
+Studio.product();
+</script>
+</body>
+</html>
